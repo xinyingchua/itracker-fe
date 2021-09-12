@@ -48,7 +48,7 @@ export default function ProductImage(props) {
       <Grid item xs={6} >
 
       <img
-        src='https://res.cloudinary.com/dhexix4cn/image/upload/v1631428034/itracker/3346470616172_S_qrvns8.png'
+        src={props.image}
         alt='product'
         className={classes.photo}
         />
@@ -56,7 +56,7 @@ export default function ProductImage(props) {
       
       <Grid item xs={6}>
         <Typography className={classes.title} color="textSecondary">
-          Skincare {props.title}
+          {props.title}
         </Typography>
         </Grid>
         <Typography className={classes.targetTitle} style={{marginLeft: '10px'}}> 

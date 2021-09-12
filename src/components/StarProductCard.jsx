@@ -43,13 +43,13 @@ export default function StarProductCard(props) {
 
         <Grid container xs={12}>
         <Grid item xs={3} style={{margin: '10px'}}>
-        <ProductImage/>
+        <ProductImage title="Skincare" image='https://res.cloudinary.com/dhexix4cn/image/upload/v1631428034/itracker/3346470616172_S_qrvns8.png'/>
         </Grid>
         <Grid item xs={3} style={{margin: '10px'}}>
-        <ProductImage/>
+        <ProductImage title="Makeup" image='https://res.cloudinary.com/dhexix4cn/image/upload/v1631428034/itracker/ROUGEG_VELVET__DEFAULT_VISUAL__PRODUCT-PAGE_wux2tt.png'/>
         </Grid>
         <Grid item xs={3} style={{margin: '10px'}}>
-        <ProductImage/>
+        <ProductImage title="Fragrance" image='https://res.cloudinary.com/dhexix4cn/image/upload/v1631428035/itracker/3346470109568_G010956_pamplelune_75_a_1_kp6uun.png'/>
         </Grid>
         </Grid>
 
