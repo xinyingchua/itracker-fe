@@ -1,5 +1,4 @@
 import React from 'react'
-
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -18,6 +17,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import ImageAvatars from '../components/Avatar'
+
 
 const drawerWidth = 240;
 
@@ -94,12 +95,19 @@ const useStyles = makeStyles((theme) => ({
     },
     tool: {
         background: '#FFFFFF',
+        display: 'flex',
+        justifyContent: 'space-between',
+
     },
     logo: {
         maxWidth: 150,
         marginTop: '20px',
         marginBottom: '20px'
       },
+    avatar: {
+      display: 'flex',
+      justifyContent: 'flex-end'
+    },      
 
   }));
 
@@ -127,6 +135,7 @@ export default function NavBar() {
         >
     
           <Toolbar className={classes.tool}>
+          
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -136,13 +145,15 @@ export default function NavBar() {
                 [classes.hide]: open,
               })}
             >
-
+             
               <MenuIcon className ={classes.orangeIcon}  />
-     
+   
             </IconButton>
             <Typography variant="h6" noWrap>
-              Mini variant drawer
+             
             </Typography>
+           <ImageAvatars className ={classes.avatar}/>
+
           </Toolbar>
         </AppBar>
         <Drawer
