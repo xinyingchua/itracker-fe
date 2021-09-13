@@ -23,23 +23,12 @@ const useStyles = makeStyles({
     maxWidth: 50,
     margin: '0px'
   },
-  // paper: {
-  //   // padding: theme.spacing(2),
-  //   display: 'flex',
-  //   overflow: 'auto',
-  //   flexDirection: 'column',
-  // },
-  // fixedHeight: {
-  //   height: 240,
-  // },
 });
 
 export default function ProductImage(props) {
   const classes = useStyles();
-  // const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
-
+  
   return (
-    // <Grid container >
       <Paper style={{width:'120px'}}>
       <Grid container>
 
@@ -62,6 +51,5 @@ export default function ProductImage(props) {
         </Typography>
         </Grid>
         </Paper>
-    // </Grid>
   );
 }

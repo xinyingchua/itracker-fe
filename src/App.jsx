@@ -4,6 +4,7 @@ import './App.css';
 import { ThemeProvider, createTheme } from '@material-ui/core/styles'
 import NavBar from './components/NavBar';
 import Dashboard from '../src/pages/Dashboard'
+import NewTransaction from '../src/pages/NewTransaction'
 
 const theme = createTheme({
   typography: {
@@ -35,8 +36,7 @@ function App() {
       <Router>
         <Switch>
         <Route path='/dashboard' component={Dashboard} />
-
-
+        <Route path='/transactions/new' component={NewTransaction} />
         </Switch>
   
       </Router>
