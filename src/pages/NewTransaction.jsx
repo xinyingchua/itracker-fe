@@ -1,21 +1,8 @@
-import SmallCard from '../components/SmallCard'
-import StarProductCard from '../components/StarProductCard'
-import LeaderBoard from '../components/Leaderboard'
 import React from 'react';
-import clsx from 'clsx'
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import { Typography } from '@material-ui/core';
 import TransactionProductCard from '../components/TransactionProductCard'
-import Box from '@material-ui/core/Box'
-
-
-
-import Container from '@material-ui/core/Container'
-import Button from '@material-ui/core/Button'
-import { Link } from 'react-router-dom'
-
 
 const useStyles = makeStyles((theme) => ({
 
@@ -52,7 +39,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard(props) {
     const classes = useStyles();
-    const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
 
     return(
         <div className={classes.root}>
