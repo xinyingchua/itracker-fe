@@ -37,8 +37,8 @@ export default function TransactionProductCard(props) {
     }
   
   return (
-    <Grid container>
-    <Grid item key={props} xs={12} sm={4} lg={3}>
+    // <Grid container>
+    // <Grid item key={props} xs={12} sm={4} lg={3}>
     <Card className={classes.rootcard}>
       <CardContent>
 
@@ -82,8 +82,8 @@ export default function TransactionProductCard(props) {
         </Grid>
       </CardContent>
     </Card>
-  </Grid>
-  </Grid>
+  // </Grid>
+  // </Grid>
 
   );
 }
