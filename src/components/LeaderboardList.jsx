@@ -1,50 +1,55 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
 import Avatar from './Avatar'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     background: '#F4F6F9',
-    flexWrap: 'wrap',
+    flexWrap: 'none',
     margin: '10px',
     borderRadius: '20px',
     '& > *': {
       margin: theme.spacing(2),
       width: theme.spacing(16),
-      height: theme.spacing(4),
+      height: theme.spacing(2),
     },
   },
-  // image:{
-  //   marginBottom: '200px',
-  // }
 }));
 
 export default function LeaderboardList(props) {
     const classes = useStyles();
   
     return (
-      <div className={classes.root}>
-        <Typography>
-          {props.rank}
-        </Typography>
+      <div className={classes.root}
+      style={{display: "flex", flexWrap:"none"}}>
+        {/* <Grid container xs={12}> */}
+        {/* <Box display="flex"> */}
+          {/* <Grid item xs ={3}> */}
+            <Typography style={{ color: '#3565BA' }}>
+              {props.rank}
+            </Typography>
+           {/* </Grid> */}
 
-        <Grid container>
-        <Grid item xs ={6}>
-        <Avatar />
-        </Grid>
-        <Grid item xs ={6}>
-        <Typography>
-        {props.name}
-        </Typography>
-        </Grid>
-        </Grid>
 
-        <Typography>
-        {props.quantity}
-        </Typography>
+            {/* <Grid item xs ={3}> */}
+              <Avatar
+              style={{margin:"0"}}/>
+            {/* </Grid> */}
+            {/* <Grid item xs ={3}> */}
+              <Typography style={{ color: 'black' }}>
+              {props.name}
+              </Typography>
+           {/* </Grid> */}
+
+           {/* <Grid item xs ={3}> */}
+            <Typography style={{ color: '#3565BA' }}>
+            {props.quantity}
+            </Typography>
+          {/* </Grid> */}
+          {/* </Box> */}
+          {/* </Grid> */}
       </div>
     );
   }

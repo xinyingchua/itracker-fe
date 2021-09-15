@@ -1,8 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import ReceiptIcon from '@material-ui/icons/Receipt';
 import Grid from '@material-ui/core/Grid';
+import PersonIcon from '@material-ui/icons/Person';
+import TrackChangesIcon from '@material-ui/icons/TrackChanges';
 
 const useStyles = makeStyles({
   root: {
@@ -22,15 +23,32 @@ export default function SimpleCard(props) {
   return (
     <Grid container>
 
-      <Grid item xs={3} sm={3} >
-      <ReceiptIcon style={{ margin: "0px"}}/>
-      </Grid>
+      {props.title=== "Your Sales Quantity"
+      ?
+      (
+        <>
+        <Grid item xs={3} sm={3} >
+        <PersonIcon style={{ color: '#3565BA' }}/>
+        </Grid>
+        </>
+      )
+      :
+      (
+        <>
+        <Grid item xs={3} sm={3} >
+        <TrackChangesIcon style={{ color: '#3565BA' }}/>
+        </Grid>
+        </>
+      )}
+
+
       
       <Grid item xs={9} sm={9}>
-        <Typography className={classes.title} color="textSecondary">
-          Sales Quantity {props.title}
+        <Typography className={classes.title} style={{ color: '#3565BA' }}>
+          {props.title}
         </Typography>
-        <Typography variant="h5" component="h2">
+        <Typography style={{ color: '#1B2559' }}
+        variant="h5" component="h2">
           72 {props.quantity}
         </Typography>
         </Grid>

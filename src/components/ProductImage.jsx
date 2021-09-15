@@ -42,11 +42,11 @@ export default function ProductImage(props) {
       </Grid>
       
       <Grid item xs={6}>
-        <Typography className={classes.title} color="textSecondary">
+        <Typography className={classes.title} style={{ color: '#1B2559' }}>
           {props.title}
         </Typography>
         </Grid>
-        <Typography className={classes.targetTitle} style={{marginLeft: '10px'}}> 
+        <Typography className={classes.targetTitle} style={{marginLeft: '10px', color: "#1B2559"}}> 
           Target: 42 / 50 {props.quantity}
         </Typography>
         </Grid>

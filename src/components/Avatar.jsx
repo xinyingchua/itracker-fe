@@ -31,10 +31,12 @@ export default function ImageAvatars(props) {
 ) : ( 
   <div >
 <Avatar alt="Remy Sharp" src="https://res.cloudinary.com/dhexix4cn/image/upload/v1631430944/itracker/avatar_yvmom4.jpg" />
- <Typography>
+ <Typography 
+ style={{ color: 'black' }}>
  {props.username}
  </Typography>
- <Typography>
+ <Typography
+  style={{ color: '#3565BA' }}>
  {props.quantity}
  </Typography>
 </div>
