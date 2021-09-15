@@ -10,8 +10,8 @@ import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles({
   table: {
-    width: 500,
-    height: '100vh'
+    // width: '500px',
+    // height: '100vh'
   },
 });
 
