@@ -8,6 +8,7 @@ import NavBar from './components/NavBar';
 import Dashboard from '../src/pages/Dashboard'
 import NewTransaction from '../src/pages/NewTransaction'
 import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 const theme = createTheme({
   typography: {
@@ -33,12 +34,23 @@ const theme = createTheme({
 function App() {
   return (
     <div className="App">
-      
+      <ToastContainer
+          position='bottom-right'
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable={false}
+          pauseOnHover
+        />
       <ThemeProvider theme={theme}>
       <Router>
 
       <Switch>
         <Route path='/login' exact component={LoginPage} />
+        <Route path='/register' exact component={RegisterPage} />
 
         <div>
         <NavBar>

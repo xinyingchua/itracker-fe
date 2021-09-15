@@ -1,12 +1,12 @@
 import React from 'react'
 import LoginRegister from "../components/LoginRegisterForm";
 
-export default function LoginPage() {
+export default function RegisterPage() {
     return(
         <LoginRegister
-        title ="Login"
-        children = "Login"
-        type = "login"
+        title ="Register"
+        children = "Register"
+        type = "register"
         />
 
     )

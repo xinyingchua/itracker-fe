@@ -11,15 +11,12 @@ import axios from 'axios'
 // import { useCookies } from 'react-cookie'
 import { Link } from 'react-router-dom'
 import { toast } from 'material-react-toastify'
-import button from '../components/Buttons'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
   },
   image: {
-    // backgroundImage:
-    //   'url(https://res.cloudinary.com/dhexix4cn/image/upload/v1626617738/teamup/photo-girl1b_nwb8u7.jpg)',
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'light'
@@ -45,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     maxWidth: 140,
     // margin: theme.spacing(-3, 12, 10, 0),
-    margin: "70px auto",
+    margin: "20px auto",
 
   },
 }))
@@ -108,9 +105,10 @@ export default function LoginRegister(props) {
             className={classes.logo}
           />
           <Typography style={{ fontWeight: '700' }} variant='h4' align='left'>
-            Login {props.title}
+           {props.title}
           </Typography>
           
+       
           <form
             className={classes.form}
             noValidate
@@ -118,6 +116,9 @@ export default function LoginRegister(props) {
               handleFormSubmission(e)
             }}
           >
+          {props.type === "login" 
+          ?
+          ( <>
             <TextField
               variant='outlined'
               margin='normal'
@@ -144,12 +145,91 @@ export default function LoginRegister(props) {
               autoComplete='current-password'
               onChange={(e) => setPasswordLogin(e.target.value)}
             />
+            </>
+            )
+            :
+            (
+                <>
+                <TextField
+                variant='outlined'
+                margin='normal'
+                required
+                fullWidth
+                id='email'
+                label='Email Address'
+                name='email'
+                autoComplete='email'
+                autoFocus
+                onChange={(e) => {
+                    setEmailLogin(e.target.value)
+                }}
+                />
+                <TextField
+                variant='outlined'
+                margin='normal'
+                required
+                halfWidth
+                style={{ width: '55%' }}
+                id='firstName'
+                label='First Name'
+                name='firstName'
+                autoComplete='firstName'
+                autoFocus
+                onChange={(e) => {
+                    setEmailLogin(e.target.value)
+                }}
+                />
+                <TextField
+                variant='outlined'
+                margin='normal'
+                required
+                halfWidth
+                style={{ width: '43%', marginLeft: '6px'  }}
+                id='lastName'
+                label='Last Name'
+                name='lastName'
+                autoComplete='lastName'
+                autoFocus
+                onChange={(e) => {
+                    setEmailLogin(e.target.value)
+                }}
+                />
+                <TextField
+                variant='outlined'
+                margin='normal'
+                required
+                fullWidth
+                name='password'
+                label='Password'
+                type='password'
+                id='password'
+                autoComplete='current-password'
+                onChange={(e) => setPasswordLogin(e.target.value)}
+                
+                />
+                <TextField
+                variant='outlined'
+                margin='normal'
+                required
+                fullWidth
+                name='confirmPass'
+                label='Confirm Password'
+                type='confirmPassword'
+                id='confirmPassword'
+                autoComplete='current-password'
+                onChange={(e) => setPasswordLogin(e.target.value)}
+                
+                />
+            </>
+            )}
+
 
             <Button
             type='submit'
             fullWidth
             color="secondary"
             variant="contained"
+            style={{ marginTop: '10px', color:'#3565BA' }}
             children={props.children}
             />
             {props.buttonTitle}
@@ -158,7 +238,9 @@ export default function LoginRegister(props) {
               
             {props.type === "login" 
               ? 
-              (<Grid item>
+              (<Grid item
+                style={{ marginTop: '10px' }}
+                >
                     New User?
                     <Link
                     to='/register'
@@ -171,7 +253,9 @@ export default function LoginRegister(props) {
               :
               
               (
-                <Grid item>
+                <Grid item
+                style={{ marginTop: '10px' }}
+                >
                     Already have an account? 
                     <Link
                     to='/login'
