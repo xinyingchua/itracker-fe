@@ -26,7 +26,7 @@ const rows = [
 
 ];
 
-export default function TransactionReceipt() {
+export default function TransactionReceipt(props) {
   const classes = useStyles();
 
   return (

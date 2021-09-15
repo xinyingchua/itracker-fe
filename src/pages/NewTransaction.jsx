@@ -3,11 +3,13 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import TransactionProductCard from '../components/TransactionProductCard'
-import TransactionReceipt from '../components/PastTransactionsTable'
+import NewTransactionPaper from '../components/NewTransactionPaper'
 import Box from '@material-ui/core/Box';
+
 
 const useStyles = makeStyles((theme) => ({
 
+  
     root: {
         display: 'flex',
       },
@@ -57,21 +59,24 @@ export default function NewTransaction(props) {
               <Box display="flex" flexDirection ="row" flexWrap ="wrap">
 
                     <TransactionProductCard className = {classes.card} title="Abeille Royale Oil" image='https://res.cloudinary.com/dhexix4cn/image/upload/v1631428034/itracker/3346470616172_S_qrvns8.png'/>
-                    <TransactionProductCard className = {classes.card} title="Abeille Royale Oil" image='https://res.cloudinary.com/dhexix4cn/image/upload/v1631428034/itracker/3346470616172_S_qrvns8.png'/>
-                    <TransactionProductCard className = {classes.card} title="Abeille Royale Oil" image='https://res.cloudinary.com/dhexix4cn/image/upload/v1631428034/itracker/3346470616172_S_qrvns8.png'/>
-                    <TransactionProductCard className = {classes.card} title="Abeille Royale Oil" image='https://res.cloudinary.com/dhexix4cn/image/upload/v1631428034/itracker/3346470616172_S_qrvns8.png'/>
-                    <TransactionProductCard className = {classes.card} title="Abeille Royale Oil" image='https://res.cloudinary.com/dhexix4cn/image/upload/v1631428034/itracker/3346470616172_S_qrvns8.png'/>
+                    
         
               </Box>
             </Grid>
 
             <Grid item xs={4}> 
             {/* Receipts */}
-            <Grid style={{margin: '10px'}}>
+
+            <NewTransactionPaper/>
+
+
+
+            {/* <Grid style={{margin: '10px'}}>
               <div style={{display:'flex'}}>
               <TransactionReceipt></TransactionReceipt>
               </div>
-            </Grid>
+            </Grid> */}
+
             </Grid>
           </Grid>
 

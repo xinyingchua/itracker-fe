@@ -57,7 +57,7 @@ function App() {
         <NavBar>
           <Route path='/dashboard' component={Dashboard} />
           <Route path='/transactions/new' component={NewTransaction} />
-          <Route path='/transactions/' component={AllTransactions} />
+          <Route path='/transactions' exact component={AllTransactions} />
           {/* <Route path='/register' component={} /> */}
 
          </NavBar>
