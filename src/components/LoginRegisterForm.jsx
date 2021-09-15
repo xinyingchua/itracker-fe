@@ -7,8 +7,8 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import axios from 'axios'
-// import { useHistory } from 'react-router-dom'
-// import { useCookies } from 'react-cookie'
+import { useHistory } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
 import { Link } from 'react-router-dom'
 import { toast } from 'material-react-toastify'
 
@@ -57,15 +57,16 @@ export default function LoginRegister(props) {
   const [emailLogin, setEmailLogin] = React.useState('')
   const [passwordLogin, setPasswordLogin] = React.useState()
   // Npm Cookies  => [ value, setter ] ==> if we want to use setter, we need to set value
-//   const [cookie, setCookie] = useCookies(['auth_token'])
-//   let history = useHistory()
+  const [cookie, setCookie] = useCookies(['auth_token'])
+  let history = useHistory()
 
-  // use api callback
-  let fetchData = async (response) => {
+  // API POSTS
+
+  let fetchAPIData = async (response) => {
     try {
       response = await axios({
         method: 'post',
-        url: '',
+        url: 'http://localhost:4000/users/login',
         data: {
           email: emailLogin,
           password: passwordLogin,
@@ -82,15 +83,15 @@ export default function LoginRegister(props) {
   const handleFormSubmission = async (e) => { 
     e.preventDefault()
 
-    let response = await fetchData()
+    let response = await fetchAPIData()
 
     if (!response.data) {
       notify('Email or password is incorrect. Please try again.')
       return
     }
 
-    // setCookie('auth_token', response.data.token)
-    // history.push('/dashboard')
+    setCookie('auth_token', response.data.token)
+    history.push('/dashboard')
     return
   }
 
