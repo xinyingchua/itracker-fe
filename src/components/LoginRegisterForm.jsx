@@ -65,7 +65,7 @@ export default function LoginRegister(props) {
     try {
       response = await axios({
         method: 'post',
-        url: 'https://teamup-be.herokuapp.com/api/v1/login',
+        url: '',
         data: {
           email: emailLogin,
           password: passwordLogin,

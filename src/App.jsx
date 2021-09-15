@@ -10,6 +10,7 @@ import NewTransaction from '../src/pages/NewTransaction'
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import AllTransactions from './pages/ViewTransactions';
+import UserUpdate from './pages/UserUpdate';
 
 const theme = createTheme({
   typography: {
@@ -58,7 +59,7 @@ function App() {
           <Route path='/dashboard' component={Dashboard} />
           <Route path='/transactions/new' component={NewTransaction} />
           <Route path='/transactions' exact component={AllTransactions} />
-          {/* <Route path='/register' component={} /> */}
+          <Route path='/user/update' component={UserUpdate} />
 
          </NavBar>
          </div>
