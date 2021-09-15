@@ -5,7 +5,6 @@ import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
@@ -15,10 +14,14 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import ImageAvatars from '../components/Avatar'
 import { Link } from 'react-router-dom'
+import DashboardIcon from '@material-ui/icons/Dashboard'
+import PeopleIcon from '@material-ui/icons/People'
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn'
+import FormatListNumberedIcon from '@material-ui/icons/FormatListNumbered'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp'
+import ToggleOnIcon from '@material-ui/icons/ToggleOn'
 
 
 const drawerWidth = 240;
@@ -180,23 +183,67 @@ export default function NavBar(props) {
             </IconButton>
           </div>
           <Divider />
-          <List>
-            {['Dashboard', 'View All Transaction', 'Incentive Scheme', 'Leaderboard'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon className ={classes.icon}>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
+
+          <Link to='/dashboard' style={{ textDecoration: 'none', color: '#fff' }}>
+            <ListItem button>
+              <ListItemIcon style={{ color: 'white' }}>
+                <DashboardIcon />
+              </ListItemIcon>
+              <ListItemText primary='Dashboard' />
+            </ListItem>
+          </Link>
+
+          <Link to='/transactions' style={{ textDecoration: 'none', color: '#fff' }}>
+            <ListItem button>
+              <ListItemIcon style={{ color: 'white' }}>
+                <FormatListNumberedIcon />
+              </ListItemIcon>
+              <ListItemText primary='View All Transaction' />
+            </ListItem>
+          </Link>
+
+          <Link to='/incentive' style={{ textDecoration: 'none', color: '#fff' }}>
+            <ListItem button>
+              <ListItemIcon style={{ color: 'white' }}>
+                <MonetizationOnIcon />
+              </ListItemIcon>
+              <ListItemText primary='Incentive Scheme' />
+            </ListItem>
+          </Link>
+
+
+          <Link to='/leaderboard' style={{ textDecoration: 'none', color: '#fff' }}>
+            <ListItem button>
+              <ListItemIcon style={{ color: 'white' }}>
+                <PeopleIcon />
+              </ListItemIcon>
+              <ListItemText primary='Leaderboard' />
+            </ListItem>
+          </Link>
+
           <Divider />
-          <List>
-            {['Update profile', 'Log Out'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon className ={classes.icon}>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
+
+
+          <ListItem button>
+        <ListItemIcon style={{ color: 'white' }}>
+          <ToggleOnIcon />
+        </ListItemIcon>
+        <ListItemText primary='Dark Mode' />
+      </ListItem>
+
+      {/* <ListItem button> */}
+      <ListItem
+        button
+        // onClick={(e) => {
+        //   handleRemoveCookie(e)
+        // }}
+      >
+        <ListItemIcon style={{ color: 'white' }}>
+          <ExitToAppIcon />
+        </ListItemIcon>
+        <ListItemText primary='Log Out' />
+      </ListItem>
+ 
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
