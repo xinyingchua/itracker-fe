@@ -2,9 +2,12 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
 import { ThemeProvider, createTheme } from '@material-ui/core/styles'
+import { ToastContainer } from 'material-react-toastify'
+import 'material-react-toastify/dist/ReactToastify.css'
 import NavBar from './components/NavBar';
 import Dashboard from '../src/pages/Dashboard'
 import NewTransaction from '../src/pages/NewTransaction'
+import LoginPage from './pages/LoginPage';
 
 const theme = createTheme({
   typography: {
@@ -30,17 +33,26 @@ const theme = createTheme({
 function App() {
   return (
     <div className="App">
+      
       <ThemeProvider theme={theme}>
-      <NavBar>
-
       <Router>
-        <Switch>
-        <Route path='/dashboard' component={Dashboard} />
-        <Route path='/transactions/new' component={NewTransaction} />
-        </Switch>
-  
+
+      <Switch>
+        <Route path='/login' exact component={LoginPage} />
+
+        <div>
+        <NavBar>
+          <Route path='/dashboard' component={Dashboard} />
+          <Route path='/transactions/new' component={NewTransaction} />
+          {/* <Route path='/register' component={} /> */}
+
+         </NavBar>
+         </div>
+      </Switch>
+
+
       </Router>
-      </NavBar>
+
       </ThemeProvider>
 
     </div>

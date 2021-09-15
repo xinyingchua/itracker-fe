@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import TransactionProductCard from '../components/TransactionProductCard'
 import TransactionReceipt from '../components/TransactionReceipt'
-import { WrapText } from '@material-ui/icons';
 import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
