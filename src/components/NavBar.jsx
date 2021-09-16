@@ -22,6 +22,8 @@ import MonetizationOnIcon from '@material-ui/icons/MonetizationOn'
 import FormatListNumberedIcon from '@material-ui/icons/FormatListNumbered'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import ToggleOnIcon from '@material-ui/icons/ToggleOn'
+import { useCookies } from 'react-cookie'
+import { useHistory } from 'react-router-dom'
 
 
 const drawerWidth = 240;
@@ -120,12 +122,22 @@ export default function NavBar(props) {
     const theme = useTheme();
     const [open, setOpen] = React.useState(true);
   
+    const [cookie, removeCookie] = useCookies(['auth_token'])
+
+
     const handleDrawerOpen = () => {
       setOpen(true);
     };
   
     const handleDrawerClose = () => {
       setOpen(false);
+    };
+
+    let history = useHistory()
+    const handleRemoveCookie = (e) => {
+      e.preventDefault()
+      removeCookie('auth_token')
+      history.push('/login')
     };
   
     return (
@@ -234,9 +246,9 @@ export default function NavBar(props) {
       {/* <ListItem button> */}
       <ListItem
         button
-        // onClick={(e) => {
-        //   handleRemoveCookie(e)
-        // }}
+        onClick={(e) => {
+          handleRemoveCookie(e)
+        }}
       >
         <ListItemIcon style={{ color: 'white' }}>
           <ExitToAppIcon />
