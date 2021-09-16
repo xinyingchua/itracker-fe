@@ -54,7 +54,7 @@ function App() {
         <Route path='/login' exact component={LoginPage} />
         <Route path='/register' exact component={RegisterPage} />
 
-        <div>
+        <React.Fragment>
         <NavBar>
           <Route path='/dashboard' component={Dashboard} />
           <Route path='/transactions/new' component={NewTransaction} />
@@ -62,7 +62,7 @@ function App() {
           <Route path='/user/update' component={UserUpdate} />
 
          </NavBar>
-         </div>
+         </React.Fragment>
       </Switch>
 
 
