@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,6 +7,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { useCookies } from 'react-cookie';
+import axios from 'axios';
 
 const useStyles = makeStyles({
   table: {
@@ -15,19 +17,49 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(name, quantity, price, amount) {
-  return { name, quantity, price, amount};
-}
-
-const rows = [
-  createData('Abeille Royale Oil', 1, 216, 216),
-  createData('Abeille Royale Oil', 1, 216, 216),
-  createData('Abeille Royale Oil', 1, 216, 216),
-
-];
 
 export default function TransactionReceipt(props) {
   const classes = useStyles();
+
+  const [cookies] = useCookies(['auth_token'])
+  const [transactions, getTransactions] = React.useState([])
+  // let history = useHistory()
+
+  
+  const fetchAPI = async (api) => {
+    let response = null
+
+    try {
+      response = await axios.get(api, { headers: cookies })
+    } catch (err) {
+      return err
+    }
+
+    return response.data
+    // console.log(response.data)
+  }
+
+
+  useEffect(() => {
+    (async () => {
+      const transactionData = await fetchAPI(
+      'http://localhost:4000/transactions'
+      )
+      getTransactions(transactionData)
+      // console.log(transactions)
+    })()},[])
+  
+    console.log(transactions)
+
+
+    
+  // useEffect(async () => {
+  //   let transactionData = await fetchAPI(
+  //     'http://localhost:4000/transactions'
+  //   )
+  //   getTransactions(transactionData)
+  // }, [])
+
 
   return (
     <TableContainer component={Paper}>
@@ -40,13 +72,13 @@ export default function TransactionReceipt(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.name}>
+          {transactions.map((row) => (
+            <TableRow key={row.title}>
               <TableCell component="th" scope="row">
-                {row.name}
+                {row.title}
               </TableCell>
-              <TableCell align="right">{row.quantity}</TableCell>
-              <TableCell align="right">{row.price}</TableCell>
+              <TableCell align="right">{row.id}</TableCell>
+              <TableCell align="right">{row.id}</TableCell>
             </TableRow>
           ))}
         </TableBody>
