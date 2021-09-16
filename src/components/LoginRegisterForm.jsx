@@ -52,11 +52,15 @@ export default function LoginRegister(props) {
 
   const notify = (message) => toast.dark(message)
 
-  // use useState hooks
+  // useState Hooks
 
   const [emailLogin, setEmailLogin] = React.useState('')
-  const [passwordLogin, setPasswordLogin] = React.useState()
-  // Npm Cookies  => [ value, setter ] ==> if we want to use setter, we need to set value
+  const [passwordLogin, setPasswordLogin] = React.useState('')
+  const [confirmPassword, setConfirmPassword] = React.useState('')
+  const [firstName, setFirstName] = React.useState('')
+  const [lastName, setLastName] = React.useState('')
+  
+  // COOKIES & HISTORY
   const [cookie, setCookie] = useCookies(['auth_token'])
   let history = useHistory()
 
@@ -64,14 +68,29 @@ export default function LoginRegister(props) {
 
   let fetchAPIData = async (response) => {
     try {
-      response = await axios({
-        method: 'post',
-        url: 'http://localhost:4000/users/login',
-        data: {
-          email: emailLogin,
-          password: passwordLogin,
-        },
-      })
+      if(props.type === "login") {
+        response = await axios({
+          method: 'post',
+          url: 'http://localhost:4000/users/login',
+          data: {
+            email: emailLogin,
+            password: passwordLogin,
+          },
+        })
+      } else if(props.type === "register") {
+        response = await axios({
+          method: 'post',
+          url: 'http://localhost:4000/users/register',
+          data: {
+            email: emailLogin,
+            firstName: firstName,
+            lastName: lastName,
+            password: passwordLogin,
+            confirmPassword: confirmPassword,
+          },
+        })
+      }
+
     } catch (err) {
       return err
     }
@@ -85,14 +104,22 @@ export default function LoginRegister(props) {
 
     let response = await fetchAPIData()
 
-    if (!response.data) {
-      notify('Email or password is incorrect. Please try again.')
+    if(props.type ==="login") {
+      if (!response.data) {
+        notify('Email or password is incorrect. Please try again.')
+        return
+      }
+      setCookie('auth_token', response.data.token)
+       history.push('/dashboard')
       return
     }
+    else if(props.type ==="register") {
+      if(response.status !== 201) {
+        return notify("Please check your inputs.")
+      }
+      history.push('/login')
+    }
 
-    setCookie('auth_token', response.data.token)
-    history.push('/dashboard')
-    return
   }
 
   return (
@@ -177,7 +204,7 @@ export default function LoginRegister(props) {
                 autoComplete='firstName'
                 autoFocus
                 onChange={(e) => {
-                    setEmailLogin(e.target.value)
+                    setFirstName(e.target.value)
                 }}
                 />
                 <TextField
@@ -192,7 +219,7 @@ export default function LoginRegister(props) {
                 autoComplete='lastName'
                 autoFocus
                 onChange={(e) => {
-                    setEmailLogin(e.target.value)
+                    setLastName(e.target.value)
                 }}
                 />
                 <TextField
@@ -215,10 +242,10 @@ export default function LoginRegister(props) {
                 fullWidth
                 name='confirmPass'
                 label='Confirm Password'
-                type='confirmPassword'
+                type='password'
                 id='confirmPassword'
                 autoComplete='current-password'
-                onChange={(e) => setPasswordLogin(e.target.value)}
+                onChange={(e) => setConfirmPassword(e.target.value)}
                 
                 />
             </>
