@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -30,15 +30,32 @@ const useStyles = makeStyles((theme) => ({
 export default function TransactionProductCard(props) {
   const classes = useStyles();
 
+
+  // const [cart, setCart] = React.useState([]);
+
+  function addItemToCart(e) {
+    // const item = e.target.title;
+    const item = {
+      desc: props.desc,
+      price:  props.price,
+      qty: props.qty,
+      unit: props.unit
+    }
+
+    console.log(item);
+    // setCart(cart => [...cart, item]);
+    
+    props.setTransactionItems([...props.transactionItems, item]) 
+  }
+
     // submit form function
     const handleFormSummit = (e) => {
       e.preventDefault()
+      
       // history.push('/to-do')
     }
   
   return (
-    // <Grid container>
-    // <Grid item key={props} xs={12} sm={4} lg={3}>
     <Card className={classes.rootcard}>
       <CardContent>
 
@@ -69,9 +86,10 @@ export default function TransactionProductCard(props) {
                     variant='contained'
                     justify='right'
                     color='primary'
+                    desc={props.desc}
+                    qty={props.qty}
                     className={classes.button}
-                    // onClick={deleteToDoData}
-                    // startIcon={<CheckCircleOutlineIcon />}
+                    onClick={addItemToCart}
                   >
                     Add
                   </Button>
@@ -82,8 +100,7 @@ export default function TransactionProductCard(props) {
         </Grid>
       </CardContent>
     </Card>
-  // </Grid>
-  // </Grid>
+
 
   );
 }

@@ -8,10 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from './Buttons'
-import { useCookies } from 'react-cookie'
 
-
-const TAX_RATE = 0.07;
 
 const useStyles = makeStyles({
   table: {
@@ -20,9 +17,6 @@ const useStyles = makeStyles({
   },
 });
 
-function ccyFormat(num) {
-  return `${num.toFixed(2)}`;
-}
 
 function priceRow(qty, unit) {
   return qty * unit;
@@ -43,35 +37,58 @@ const rows = [
   createRow('Aqua Allegoria EDT 100ml', 1, 119),
 ];
 
-const invoiceSubtotal = subtotal(rows);
-const invoiceTaxes = TAX_RATE * invoiceSubtotal;
-const invoiceTotal = invoiceTaxes + invoiceSubtotal;
 
-export default function SpanningTable() {
+
+// const invoiceSubtotal = subtotal(rows);
+// const invoiceTaxes = TAX_RATE * invoiceSubtotal;
+// const invoiceTotal = invoiceTaxes + invoiceSubtotal;
+
+export default function SpanningTable(props) {
   const classes = useStyles();
 
+  const transactionsItemsList = props.transactionItems;
 
+  // const TAX_RATE = 0.07;
+  const invoiceSubtotal = subtotal(transactionsItemsList);
+  console.log(transactionsItemsList)
+
+  
+  // const invoiceTaxes = TAX_RATE * invoiceSubtotal;
+  const invoiceTotal = invoiceSubtotal;
+
+  
+  // function subtotal(items) {
+  //   return items.map(({ price }) => items.price).reduce((sum, i) => sum + i, 0);
+  // }
+
+  // function subtotal(arr) {
+  //    const sum = arr.reduce(function(acc, cur) {
+  //     // if (Number.isInteger(cur.price)) 
+  //     return acc + cur.price;
+  //     // else return acc;
+  // }, 0);
+      
+  //   console.log(subtotal(transactionsItemsList));
+  // }
+
+  // function createRow(desc, qty, unit) {
+  //   const price = priceRow(qty, unit);
+  //   return { desc, qty, unit, price };
+  // }
+  
+  function ccyFormat(num) {
+    return `${parseFloat(num).toFixed(2)}`;
+  }
+  
+  function priceRow(qty, unit) {
+    return qty * unit;
+  }
+  
+
+  console.log("hello" , transactionsItemsList)
   const handleFormSubmission = async (e) => { 
     e.preventDefault()
-
-    // let response = await fetchAPIData()
-
-    // if(props.type ==="login") {
-    //   if (!response.data) {
-    //     notify('Email or password is incorrect. Please try again.')
-    //     return
-    //   }
-    //   setCookie('auth_token', response.data.token)
-    //   //  history.push('/dashboard')
-    //   return
-    // }
-    // else if(props.type ==="register") {
-    //   if(response.status !== 201) {
-    //     return notify("Please check your inputs.")
-    //   }
-    //   history.push('/login')
-    // }
-
+   
   }
 
   return (
@@ -80,7 +97,7 @@ export default function SpanningTable() {
         <TableHead>
           <TableRow>
             <TableCell align="left" colSpan={4}>
-              Order #1111
+              Transaction Summary:
             </TableCell>
           </TableRow>
           <TableRow>
@@ -91,12 +108,13 @@ export default function SpanningTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.desc}>
-              <TableCell>{row.desc}</TableCell>
-              <TableCell align="right">{row.qty}</TableCell>
-              <TableCell align="right">{row.unit}</TableCell>
-              <TableCell align="right">{ccyFormat(row.price)}</TableCell>
+          {console.log("check", transactionsItemsList[0])}
+          {transactionsItemsList.map((item) => (
+            <TableRow key={item.desc}>
+              <TableCell>{item.desc}</TableCell>
+              <TableCell align="right">{item.qty}</TableCell> 
+              <TableCell align="right">{item.price}</TableCell>
+              <TableCell align="right">{ccyFormat(priceRow(item.price, item.unit))} </TableCell>
             </TableRow>
           ))}
 

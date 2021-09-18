@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
@@ -44,6 +44,15 @@ const useStyles = makeStyles((theme) => ({
 export default function NewTransaction(props) {
     const classes = useStyles();
 
+    const [transactionItems, setTransactionItems] = React.useState([])
+
+    // create state for transaction array (clickeditem)
+    // [] --> product id 
+    // transaction paper to render based on clicked item
+    useEffect (() => {
+      console.log("see", {transactionItems})
+    },[transactionItems])
+
     return(
         <div className={classes.root}>
        <Grid container>
@@ -58,24 +67,23 @@ export default function NewTransaction(props) {
             <Grid item xs={8} direction="row"> 
               <Box display="flex" flexDirection ="row" flexWrap ="wrap">
 
-                    <TransactionProductCard className = {classes.card} title="Abeille Royale Oil" image='https://res.cloudinary.com/dhexix4cn/image/upload/v1631428034/itracker/3346470616172_S_qrvns8.png'/>
-                    
+                    <TransactionProductCard className = {classes.card}
+                    title="Abeille Royale Oil"
+                    image='https://res.cloudinary.com/dhexix4cn/image/upload/v1631428034/itracker/3346470616172_S_qrvns8.png' 
+                    desc ="Abeille Royale Oil" qty='1' unit="1" price="100"
+                    transactionItems = {transactionItems}
+                    setTransactionItems = {setTransactionItems}
+                    />                
         
               </Box>
             </Grid>
 
             <Grid item xs={4}> 
             {/* Receipts */}
-
-            <NewTransactionPaper/>
-
-
-
-            {/* <Grid style={{margin: '10px'}}>
-              <div style={{display:'flex'}}>
-              <TransactionReceipt></TransactionReceipt>
-              </div>
-            </Grid> */}
+            <NewTransactionPaper
+            transactionItems = {transactionItems}
+            setTransactionItems = {setTransactionItems}
+            />
 
             </Grid>
           </Grid>
