@@ -7,6 +7,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Button from './Buttons'
+import { useCookies } from 'react-cookie'
 
 
 const TAX_RATE = 0.07;
@@ -48,6 +50,30 @@ const invoiceTotal = invoiceTaxes + invoiceSubtotal;
 export default function SpanningTable() {
   const classes = useStyles();
 
+
+  const handleFormSubmission = async (e) => { 
+    e.preventDefault()
+
+    // let response = await fetchAPIData()
+
+    // if(props.type ==="login") {
+    //   if (!response.data) {
+    //     notify('Email or password is incorrect. Please try again.')
+    //     return
+    //   }
+    //   setCookie('auth_token', response.data.token)
+    //   //  history.push('/dashboard')
+    //   return
+    // }
+    // else if(props.type ==="register") {
+    //   if(response.status !== 201) {
+    //     return notify("Please check your inputs.")
+    //   }
+    //   history.push('/login')
+    // }
+
+  }
+
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} >
@@ -88,10 +114,21 @@ export default function SpanningTable() {
             <TableCell align="right"></TableCell>
             <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
           </TableRow>
-    
+
 
         </TableBody>
       </Table>
+      <Button
+            type='submit'
+            // fullWidth
+            color="secondary"
+            variant="contained"
+            style={{ marginTop: '10px', color:'#3565BA', width: "50px" }}
+            children="submit"
+            onSubmit={(e) => {
+              handleFormSubmission(e)
+            }}
+            />
     </TableContainer>
   );
 }
