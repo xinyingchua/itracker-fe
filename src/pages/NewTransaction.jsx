@@ -5,7 +5,10 @@ import { Typography } from '@material-ui/core';
 import TransactionProductCard from '../components/TransactionProductCard'
 import NewTransactionPaper from '../components/NewTransactionPaper'
 import Box from '@material-ui/core/Box';
-
+import axios from 'axios'
+import { useHistory } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
+import { toast } from 'material-react-toastify'
 
 const useStyles = makeStyles((theme) => ({
 
@@ -45,13 +48,40 @@ export default function NewTransaction(props) {
     const classes = useStyles();
 
     const [transactionItems, setTransactionItems] = React.useState([])
+    const [enterTransaction, setEnterTransaction] = React.useState([])
+    const [apiStatus, setApiStatus] = React.useState('')
+    const [cookies] = useCookies(['auth_token'])
+    let history = useHistory()
 
-    // create state for transaction array (clickeditem)
-    // [] --> product id 
+    // const notify = (message) => toast.dark(message)
+
+    let createTransaction = async (e) => {
+      try{
+        let response = await axios({
+          method: 'post',
+          headers: cookies,
+          url: 'http://localhost:4000/transactions',
+          data: {
+            transactionItems
+          },
+        })
+      console.log(1)
+      // setApiStatus(true)
+      history.push('/transactions')
+      return
+      }
+      catch(err){
+        // return notify('Not sucessful')
+        console.log(err)
+      }
+    }
+    
+    console.log(cookies)
     // transaction paper to render based on clicked item
     useEffect (() => {
       console.log("see", {transactionItems})
     },[transactionItems])
+
 
     return(
         <div className={classes.root}>
@@ -64,11 +94,10 @@ export default function NewTransaction(props) {
 
           <Grid container style={{width: '100%'}}> 
 
-            <Grid item xs={8} direction="row"> 
+            <Grid item xs={8}> 
               <Box display="flex" flexDirection ="row" flexWrap ="wrap">
 
                     <TransactionProductCard className = {classes.card}
-                    title="Abeille Royale Oil"
                     image='https://res.cloudinary.com/dhexix4cn/image/upload/v1631428034/itracker/3346470616172_S_qrvns8.png' 
                     desc ="Abeille Royale Oil" qty='1' unit="1" price="100"
                     transactionItems = {transactionItems}
@@ -83,6 +112,8 @@ export default function NewTransaction(props) {
             <NewTransactionPaper
             transactionItems = {transactionItems}
             setTransactionItems = {setTransactionItems}
+            setEnterTransaction = {setEnterTransaction}
+            createTransaction = {createTransaction}
             />
 
             </Grid>

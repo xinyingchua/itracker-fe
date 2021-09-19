@@ -47,6 +47,16 @@ export default function SpanningTable(props) {
   const classes = useStyles();
 
   const transactionsItemsList = props.transactionItems;
+  const createTransaction = props.createTransaction();
+
+
+
+  function submitNewTransaction() {
+ 
+  console.log('yellow');
+    
+    // props.setEnterTransaction([...props.transactionItems]) 
+  }
 
   // const TAX_RATE = 0.07;
   const invoiceSubtotal = subtotal(transactionsItemsList);
@@ -86,10 +96,11 @@ export default function SpanningTable(props) {
   
 
   console.log("hello" , transactionsItemsList)
-  const handleFormSubmission = async (e) => { 
-    e.preventDefault()
+  // const handleFormSubmission = async(e) => { 
+  //   e.preventDefault()
+  //   props.createTransaction()
    
-  }
+  // }
 
   return (
     <TableContainer component={Paper}>
@@ -143,9 +154,7 @@ export default function SpanningTable(props) {
             variant="contained"
             style={{ marginTop: '10px', color:'#3565BA', width: "50px" }}
             children="submit"
-            onSubmit={(e) => {
-              handleFormSubmission(e)
-            }}
+            onClick={createTransaction}
             />
     </TableContainer>
   );

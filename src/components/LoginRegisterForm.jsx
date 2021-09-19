@@ -111,6 +111,7 @@ export default function LoginRegister(props) {
       }
       setCookie('auth_token', response.data.token)
        history.push('/dashboard')
+       console.log(response)
       return
     }
     else if(props.type ==="register") {

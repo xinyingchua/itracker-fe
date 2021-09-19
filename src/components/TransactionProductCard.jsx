@@ -31,10 +31,7 @@ export default function TransactionProductCard(props) {
   const classes = useStyles();
 
 
-  // const [cart, setCart] = React.useState([]);
-
   function addItemToCart(e) {
-    // const item = e.target.title;
     const item = {
       desc: props.desc,
       price:  props.price,
@@ -43,7 +40,6 @@ export default function TransactionProductCard(props) {
     }
 
     console.log(item);
-    // setCart(cart => [...cart, item]);
     
     props.setTransactionItems([...props.transactionItems, item]) 
   }
@@ -57,7 +53,7 @@ export default function TransactionProductCard(props) {
   
   return (
     <Card className={classes.rootcard}>
-      <CardContent>
+      <CardContent style={{textAlign:"center"}}>
 
         <img
         src={props.image}
@@ -66,7 +62,7 @@ export default function TransactionProductCard(props) {
         />
     
         <Typography>
-          {props.title}
+          {props.desc}
         </Typography>
        
         <Grid container className={classes.button}>
@@ -77,11 +73,11 @@ export default function TransactionProductCard(props) {
                 to={{ state: { _id: props._id } }}
                 style={{ textDecoration: 'none', color: '#fff' }}
               >
-                <form
+                {/* <form
                   onSubmit={(e) => {
                     handleFormSummit(e)
-                  }}
-                >
+                  }} */}
+                {/* > */}
                   <Button
                     variant='contained'
                     justify='right'
@@ -93,7 +89,7 @@ export default function TransactionProductCard(props) {
                   >
                     Add
                   </Button>
-                </form>
+                {/* </form> */}
               </Link>
             </CardActions>
           </Grid>

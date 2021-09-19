@@ -72,10 +72,10 @@ export default function TransactionReceipt(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {transactions.map((row) => (
-            <TableRow key={row.title}>
-              <TableCell component="th" scope="row">
-                {row.title}
+          {transactions.map((row, index) => (
+            <TableRow key={row.desc}>
+              <TableCell component="th" scope="row" key={index}>
+                {row.desc}
               </TableCell>
               <TableCell align="right">{row.id}</TableCell>
               <TableCell align="right">{row.id}</TableCell>

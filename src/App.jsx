@@ -4,6 +4,9 @@ import './App.css';
 import { ThemeProvider, createTheme } from '@material-ui/core/styles'
 import { ToastContainer } from 'material-react-toastify'
 import 'material-react-toastify/dist/ReactToastify.css'
+import { instanceOf } from 'prop-types'
+import { withCookies, Cookies } from 'react-cookie'
+import { CookiesProvider } from 'react-cookie'
 import NavBar from './components/NavBar';
 import Dashboard from '../src/pages/Dashboard'
 import NewTransaction from '../src/pages/NewTransaction'
@@ -33,9 +36,13 @@ const theme = createTheme({
   },
 })
 
-function App() {
+class App extends React.Component {
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired,
+  }
+  render() {
   return (
-    <div className="App">
+    <CookiesProvider>
       <ToastContainer
           position='bottom-right'
           autoClose={5000}
@@ -69,9 +76,9 @@ function App() {
       </Router>
 
       </ThemeProvider>
-
-    </div>
+      </CookiesProvider>
   );
 }
+}
 
-export default App;
+export default withCookies(App);
