@@ -61,9 +61,9 @@ export default function NewTransaction(props) {
           method: 'post',
           headers: cookies,
           url: 'http://localhost:4000/transactions',
-          data: {
+          data: 
             transactionItems
-          },
+          ,
         })
       console.log(1)
       // setApiStatus(true)
@@ -99,7 +99,7 @@ export default function NewTransaction(props) {
 
                     <TransactionProductCard className = {classes.card}
                     image='https://res.cloudinary.com/dhexix4cn/image/upload/v1631428034/itracker/3346470616172_S_qrvns8.png' 
-                    desc ="Abeille Royale Oil" qty='1' unit="1" price="100"
+                    desc ="Abeille Royale Oil" qty={1} unit={1} price={100}
                     transactionItems = {transactionItems}
                     setTransactionItems = {setTransactionItems}
                     />                

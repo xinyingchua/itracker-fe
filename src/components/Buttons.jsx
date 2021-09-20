@@ -17,7 +17,7 @@ export default function Buttons(props) {
   
     return (
       <div className={classes.root}>
-        <Button variant={props.variant} color={props.color} children = {props.children}>
+        <Button variant={props.variant} color={props.color} children = {props.children} onClick={props.onClick}>
           
         </Button>
 

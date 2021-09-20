@@ -57,7 +57,7 @@ export default function Dashboard(props) {
             Hi Sylvia,
           </Grid>
           <Grid item xs={12} className={classes.date} >
-           12 September 2021, Sunday
+           25 September 2021, Saturday
           </Grid>
           <Grid item xs={12} sm={6}>
             <Paper

@@ -47,7 +47,7 @@ export default function SpanningTable(props) {
   const classes = useStyles();
 
   const transactionsItemsList = props.transactionItems;
-  const createTransaction = props.createTransaction();
+  // const createTransaction = props.createTransaction();
 
 
 
@@ -154,7 +154,11 @@ export default function SpanningTable(props) {
             variant="contained"
             style={{ marginTop: '10px', color:'#3565BA', width: "50px" }}
             children="submit"
-            onClick={createTransaction}
+            onClick={()=> {
+              console.log("creating transaction") 
+              props.createTransaction()
+            }
+            }
             />
     </TableContainer>
   );
