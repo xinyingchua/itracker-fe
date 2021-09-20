@@ -52,13 +52,6 @@ export default function TransactionReceipt(props) {
     console.log(transactions)
 
 
-    
-  // useEffect(async () => {
-  //   let transactionData = await fetchAPI(
-  //     'http://localhost:4000/transactions'
-  //   )
-  //   getTransactions(transactionData)
-  // }, [])
 
 
   return (
@@ -66,7 +59,7 @@ export default function TransactionReceipt(props) {
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Item &nbsp; Price</TableCell>
+            <TableCell>Item</TableCell>
             <TableCell align="right">Quantity</TableCell>
             <TableCell align="right">Price</TableCell>
           </TableRow>
@@ -77,8 +70,8 @@ export default function TransactionReceipt(props) {
               <TableCell component="th" scope="row" key={index}>
                 {row.desc}
               </TableCell>
-              <TableCell align="right">{row.id}</TableCell>
-              <TableCell align="right">{row.id}</TableCell>
+              <TableCell align="right">{row.qty}</TableCell>
+              <TableCell align="right">{row.price}</TableCell>
             </TableRow>
           ))}
         </TableBody>

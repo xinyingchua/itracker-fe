@@ -24,32 +24,23 @@ export default function LeaderboardList(props) {
     return (
       <div className={classes.root}
       style={{display: "flex", flexWrap:"none"}}>
-        {/* <Grid container xs={12}> */}
-        {/* <Box display="flex"> */}
-          {/* <Grid item xs ={3}> */}
+
             <Typography style={{ color: '#3565BA' }}>
               {props.rank}
             </Typography>
-           {/* </Grid> */}
 
 
-            {/* <Grid item xs ={3}> */}
               <Avatar
               style={{margin:"0"}}/>
-            {/* </Grid> */}
-            {/* <Grid item xs ={3}> */}
+         
               <Typography style={{ color: 'black' }}>
               {props.name}
               </Typography>
-           {/* </Grid> */}
 
-           {/* <Grid item xs ={3}> */}
             <Typography style={{ color: '#3565BA' }}>
             {props.quantity}
             </Typography>
-          {/* </Grid> */}
-          {/* </Box> */}
-          {/* </Grid> */}
+
       </div>
     );
   }
