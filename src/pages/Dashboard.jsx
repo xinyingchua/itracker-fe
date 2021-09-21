@@ -90,8 +90,10 @@ export default function Dashboard(props) {
     .catch((err) => {
       return(err)
     });
-      },[])
+      },[transactionQuantity])
 
+
+    console.log(salesQuantityDisplay)
 
     return(
         <div className={classes.root}>
