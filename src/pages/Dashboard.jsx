@@ -117,12 +117,12 @@ export default function Dashboard(props) {
             <Grid container xs={12} sm={12} >
                     <Grid item xs={6} sm={6}>
                         <Paper className={classes.paper} style={{marginRight: "5px"}} >
-                        <SmallCard title="Your Sales Quantity" quantity={targetQuantityDisplay}/>
+                        <SmallCard title="Your Sales Quantity" quantity={salesQuantityDisplay}/>
                         </Paper>
                     </Grid>
                     <Grid item xs={6} sm={6}>
                         <Paper className={classes.paper}>
-                        <SmallCard title="Your Sales Target" quantity={salesQuantityDisplay}/>
+                        <SmallCard title="Your Sales Target" quantity={targetQuantityDisplay}/>
                         </Paper>
                     </Grid>
                 </Grid>
