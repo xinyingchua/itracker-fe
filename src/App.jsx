@@ -60,7 +60,7 @@ class App extends React.Component {
       <Switch>
         <Route path='/login' exact component={LoginPage} />
         <Route path='/register' exact component={RegisterPage} />
-        <Redirect from ='/' to = '/login' />
+        {/* <Redirect from ='/' to = '/login' /> */}
 
         <React.Fragment>
         <NavBar>
@@ -70,7 +70,11 @@ class App extends React.Component {
           <Route path='/user/update' component={UserUpdate} />
 
          </NavBar>
+         <Route exact path="/">
+            <Redirect to="/login" />
+        </Route>
          </React.Fragment>
+    
       </Switch>
 
 
