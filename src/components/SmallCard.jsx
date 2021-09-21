@@ -49,7 +49,7 @@ export default function SimpleCard(props) {
         </Typography>
         <Typography style={{ color: '#1B2559' }}
         variant="h5" component="h2">
-          72 {props.quantity}
+          {props.quantity}
         </Typography>
         </Grid>
     </Grid>

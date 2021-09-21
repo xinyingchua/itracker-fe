@@ -48,13 +48,11 @@ export default function NewTransaction(props) {
     const classes = useStyles();
 
     const [transactionItems, setTransactionItems] = React.useState([])
-    const [enterTransaction, setEnterTransaction] = React.useState([])
-    const [apiStatus, setApiStatus] = React.useState('')
     const [starProducts, setStarProducts] = React.useState([])
     const [cookies] = useCookies(['auth_token'])
     let history = useHistory()
 
-    // const notify = (message) => toast.dark(message)
+    const notify = (message) => toast.dark(message)
 
     // CREATE TRANSACTION TO DB
     let createTransaction = async (e) => {
@@ -68,7 +66,7 @@ export default function NewTransaction(props) {
           ,
         })
       history.push('/transactions')
-      return
+      return notify('Transaction sucessfully added!')
       }
       catch(err){
         // return notify('Not sucessful')
@@ -131,7 +129,6 @@ export default function NewTransaction(props) {
             <NewTransactionPaper
             transactionItems = {transactionItems}
             setTransactionItems = {setTransactionItems}
-            setEnterTransaction = {setEnterTransaction}
             createTransaction = {createTransaction}
             />
 

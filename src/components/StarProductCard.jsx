@@ -38,10 +38,10 @@ export default function StarProductCard(props) {
 
       <Grid item xs={9} sm={10} l={9}>
         <Typography className={classes.title} style={{ color: '#3565BA' }}gutterBottom>
-          Star Products {props.title}
+          Star Products
         </Typography>
         <Typography variant="h5" component="h4" style={{ color: '#1B2559' }} className={classes.monthTitle} >
-          August {props.quantity}
+          October {props.quantity}
         </Typography>
 
         <Grid container xs={12}>

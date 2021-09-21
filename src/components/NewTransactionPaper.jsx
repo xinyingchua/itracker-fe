@@ -22,20 +22,10 @@ function priceRow(qty, unit) {
   return qty * unit;
 }
 
-function createRow(desc, qty, unit) {
-  const price = priceRow(qty, unit);
-  return { desc, qty, unit, price };
-}
 
 function subtotal(items) {
   return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
 }
-
-const rows = [
-  createRow('Abeille Royale Oil', 1, 216),
-  createRow('Rouge G Lipstick', 2, 48),
-  createRow('Aqua Allegoria EDT 100ml', 1, 119),
-];
 
 
 
@@ -43,7 +33,6 @@ export default function SpanningTable(props) {
   const classes = useStyles();
 
   const transactionsItemsList = props.transactionItems;
-  // const createTransaction = props.createTransaction();
 
 
 
@@ -53,25 +42,6 @@ export default function SpanningTable(props) {
   
   const invoiceTotal = invoiceSubtotal;
 
-  
-  // function subtotal(items) {
-  //   return items.map(({ price }) => items.price).reduce((sum, i) => sum + i, 0);
-  // }
-
-  // function subtotal(arr) {
-  //    const sum = arr.reduce(function(acc, cur) {
-  //     // if (Number.isInteger(cur.price)) 
-  //     return acc + cur.price;
-  //     // else return acc;
-  // }, 0);
-      
-  //   console.log(subtotal(transactionsItemsList));
-  // }
-
-  // function createRow(desc, qty, unit) {
-  //   const price = priceRow(qty, unit);
-  //   return { desc, qty, unit, price };
-  // }
   
   function ccyFormat(num) {
     return `${parseFloat(num).toFixed(2)}`;

@@ -1,11 +1,14 @@
 import SmallCard from '../components/SmallCard'
 import StarProductCard from '../components/StarProductCard'
 import LeaderBoard from '../components/Leaderboard'
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import clsx from 'clsx'
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import axios from 'axios'
+import { useCookies } from 'react-cookie'
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -45,9 +48,50 @@ const useStyles = makeStyles((theme) => ({
       },
   }));
 
+
+
 export default function Dashboard(props) {
     const classes = useStyles();
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
+
+    const [starProductsTarget, setStarProductsTarget] = React.useState([])
+    const [transactionQuantity, setTransactionQuantity] = React.useState([])
+    const [targetQuantityDisplay, setTargetQuantityDisplay] = React.useState('')
+    const [salesQuantityDisplay, setSalesQuantityDisplay] = React.useState('')
+    const [cookies] = useCookies(['auth_token'])
+
+
+    // MAKING MULTIPLE AXIOS GET
+    let URL1 = 'http://localhost:4000/products';
+    let URL2 = 'http://localhost:4000/transactions';
+    
+    const fetchAPI = (url) => axios.get(url, {headers: cookies});
+    
+    const promiseArray = [URL1, URL2].map(fetchAPI);
+    
+
+    useEffect(() => {
+      // fetchAPI()
+      Promise.all(promiseArray)
+    .then((data) => {
+      setStarProductsTarget(data[0])
+      setTransactionQuantity(data[1])
+
+      const targetQuantity = starProductsTarget.data.reduce(function(prev, cur) {
+        return prev + cur.target
+      },0)
+      setTargetQuantityDisplay(targetQuantity)
+
+      const salesQuantity = transactionQuantity.data.reduce(function(prev, cur) {
+        return prev + cur.qty
+      },0)
+      setSalesQuantityDisplay(salesQuantity)
+    })
+    .catch((err) => {
+      return(err)
+    });
+      },[])
+
 
     return(
         <div className={classes.root}>
@@ -70,13 +114,13 @@ export default function Dashboard(props) {
 
             <Grid container xs={12} sm={12} >
                     <Grid item xs={6} sm={6}>
-                        <Paper className={classes.paper} style={{marginRight: "5px"}}>
-                        <SmallCard title="Your Sales Quantity"/>
+                        <Paper className={classes.paper} style={{marginRight: "5px"}} >
+                        <SmallCard title="Your Sales Quantity" quantity={targetQuantityDisplay}/>
                         </Paper>
                     </Grid>
                     <Grid item xs={6} sm={6}>
                         <Paper className={classes.paper}>
-                        <SmallCard title="Your Sales Target"/>
+                        <SmallCard title="Your Sales Target" quantity={salesQuantityDisplay}/>
                         </Paper>
                     </Grid>
                 </Grid>

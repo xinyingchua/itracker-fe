@@ -7,10 +7,6 @@ import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
-import { useHistory } from 'react-router-dom'
-import { useCookies } from 'react-cookie'
-
 
 
 const useStyles = makeStyles((theme) => ({
@@ -36,7 +32,7 @@ export default function TransactionProductCard(props) {
   function addItemToCart(e) {
     const item = {
       desc: props.desc,
-      price:  props.price,
+      price: props.price,
       qty: props.qty,
       unit: props.unit
     }
