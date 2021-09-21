@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -7,7 +7,9 @@ import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import { Link } from 'react-router-dom'
-
+import axios from 'axios'
+import { useHistory } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
 
 
 
@@ -44,12 +46,7 @@ export default function TransactionProductCard(props) {
     props.setTransactionItems([...props.transactionItems, item]) 
   }
 
-    // submit form function
-    const handleFormSummit = (e) => {
-      e.preventDefault()
-      
-      // history.push('/to-do')
-    }
+
   
   return (
     <Card className={classes.rootcard}>
@@ -73,11 +70,7 @@ export default function TransactionProductCard(props) {
                 to={{ state: { _id: props._id } }}
                 style={{ textDecoration: 'none', color: '#fff' }}
               >
-                {/* <form
-                  onSubmit={(e) => {
-                    handleFormSummit(e)
-                  }} */}
-                {/* > */}
+       
                   <Button
                     variant='contained'
                     justify='right'
@@ -89,14 +82,12 @@ export default function TransactionProductCard(props) {
                   >
                     Add
                   </Button>
-                {/* </form> */}
               </Link>
             </CardActions>
           </Grid>
         </Grid>
       </CardContent>
     </Card>
-
 
   );
 }

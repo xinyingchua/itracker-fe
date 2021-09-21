@@ -39,10 +39,6 @@ const rows = [
 
 
 
-// const invoiceSubtotal = subtotal(rows);
-// const invoiceTaxes = TAX_RATE * invoiceSubtotal;
-// const invoiceTotal = invoiceTaxes + invoiceSubtotal;
-
 export default function SpanningTable(props) {
   const classes = useStyles();
 
@@ -51,19 +47,10 @@ export default function SpanningTable(props) {
 
 
 
-  function submitNewTransaction() {
- 
-  console.log('yellow');
-    
-    // props.setEnterTransaction([...props.transactionItems]) 
-  }
-
-  // const TAX_RATE = 0.07;
   const invoiceSubtotal = subtotal(transactionsItemsList);
   console.log(transactionsItemsList)
 
   
-  // const invoiceTaxes = TAX_RATE * invoiceSubtotal;
   const invoiceTotal = invoiceSubtotal;
 
   
@@ -96,11 +83,7 @@ export default function SpanningTable(props) {
   
 
   console.log("hello" , transactionsItemsList)
-  // const handleFormSubmission = async(e) => { 
-  //   e.preventDefault()
-  //   props.createTransaction()
-   
-  // }
+
 
   return (
     <TableContainer component={Paper}>

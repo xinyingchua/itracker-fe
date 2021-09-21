@@ -50,11 +50,13 @@ export default function NewTransaction(props) {
     const [transactionItems, setTransactionItems] = React.useState([])
     const [enterTransaction, setEnterTransaction] = React.useState([])
     const [apiStatus, setApiStatus] = React.useState('')
+    const [starProducts, setStarProducts] = React.useState([])
     const [cookies] = useCookies(['auth_token'])
     let history = useHistory()
 
     // const notify = (message) => toast.dark(message)
 
+    // CREATE TRANSACTION TO DB
     let createTransaction = async (e) => {
       try{
         let response = await axios({
@@ -65,8 +67,6 @@ export default function NewTransaction(props) {
             transactionItems
           ,
         })
-      console.log(1)
-      // setApiStatus(true)
       history.push('/transactions')
       return
       }
@@ -76,12 +76,31 @@ export default function NewTransaction(props) {
       }
     }
     
-    console.log(cookies)
+    // GET STAR PRODUCTS FROM DB
+    const fetchAPI = async (api) => {
+      let response = null
+  
+      try {
+        response = await axios.get('http://localhost:4000/products', { headers: cookies })
+        setStarProducts(response.data)
+      } catch (err) {
+        return err
+      }
+  
+      return response.data
+    }
+  
+    console.log(starProducts) 
+
     // transaction paper to render based on clicked item
     useEffect (() => {
       console.log("see", {transactionItems})
     },[transactionItems])
 
+    useEffect(() => {
+      fetchAPI()
+      },[])
+    
 
     return(
         <div className={classes.root}>
@@ -96,14 +115,14 @@ export default function NewTransaction(props) {
 
             <Grid item xs={8}> 
               <Box display="flex" flexDirection ="row" flexWrap ="wrap">
-
+              {starProducts.map((item, index) => (
                     <TransactionProductCard className = {classes.card}
-                    image='https://res.cloudinary.com/dhexix4cn/image/upload/v1631428034/itracker/3346470616172_S_qrvns8.png' 
-                    desc ="Abeille Royale Oil" qty={1} unit={1} price={100}
+                    image={item.image}
+                    desc ={item.desc} qty={1} unit={1} price={item.price}
                     transactionItems = {transactionItems}
                     setTransactionItems = {setTransactionItems}
                     />                
-        
+              ))}
               </Box>
             </Grid>
 
