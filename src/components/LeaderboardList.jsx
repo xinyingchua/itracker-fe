@@ -29,7 +29,6 @@ export default function LeaderboardList(props) {
               {props.rank}
             </Typography>
 
-
               <Avatar
               style={{margin:"0"}}/>
          
