@@ -65,7 +65,8 @@ OBJECTIVE: <a href="https://itracker-fe.herokuapp.com/">iTracker</a> is an App c
 
 <h2>Note to self</h2>
 1. Further improve on app features e.g. edit and delete transaction, update user profile, inputing transaction date per item<br>
-2. Code Refactor<br>
+2. To deploy BE on Heroku <br>
+3. Code Refactor<br>
 <br>
 
 
