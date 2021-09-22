@@ -236,13 +236,6 @@ export default function NavBar(props) {
           <Divider />
 
 
-          <ListItem button>
-        <ListItemIcon style={{ color: 'white' }}>
-          <ToggleOnIcon />
-        </ListItemIcon>
-        <ListItemText primary='Dark Mode' />
-      </ListItem>
-
       {/* <ListItem button> */}
       <ListItem
         button

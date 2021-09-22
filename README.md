@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+<h1>iTracker</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+PROBLEM: In a retail department store setting, brands have no visibility of daily sales achieved. Brands receive sales report on a monthly basis. 
 
-## Available Scripts
+OBJECTIVE: <a href="https://itracker-fe.herokuapp.com/">iTracker</a> is an App created for internal use so brands/ retail managers can track and monitor daily sales at a store. Each retail staff will have an account to input their own transaction similarly to a POS system. 
 
-In the project directory, you can run:
+<br />
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<h2> Application Features </h2>
+1. Dashboard <br>
+2. Create Transactions<br>
+3. View Transactions<br>
+4. Login Page<br>
+5. Register Page<br>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<br/>
+<h2>Technologies used</h2>
+- React<br>
+- Toastify<br>
+- Material UI<br>
+- SQL TypeORM<br>
+- Nestjs - Typescript<br>
+- Bcrypt<br>
+- AXIOS<br>
+- CORS<br>
+- DOTENV<br>
+- JSON Web Token<br>
 
-### `npm test`
+<br/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+<h2>Routes / Pages</h2>
+<h3>Front End:</h3>
+<img src="public/routes-fe.png" width="1000">
+<br><br>
+<h3>Back End:</h3>
+<img src="public/routes-be.png" width="1000">
+<br>
+<br/>
+<h2>The Approaches Taken</h2>
+1. Research on best practices and design inspiration<br>
+2. App Name Exploration <br>
+3. Wireframe / Design mock up & logo design using Figma<br>
+4. Determine the routes and data needed<br>
+5. Reseach and explore NestJS <br>
+6. Start working on Backend using NestJS<br>
+7. Deploying Backend on Postman<br>
+8. Work on on Frontend using React & MaterialUI <br>
+9. Deploying Front End onto Heroku
+<br>
+<br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<h2>App Design</h2>
+<img src="public/loginpage.png" width="1000">
+<img src="public/registerpage.png" width="1000">
+<img src="public/dashboard.png" width="1000">
+<img src="public/createtransaction.png" width="1000">
+<img src="public/viewtransactions.png" width="1000">
+<br><br>
+<h2>Unsolved Problems</h2>
+1. Bug on Add Transaction Item: Duplicated item will not increase quanity count <br>
+2. Leaderboard <br>
+<br>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<h2>Note to self</h2>
+1. Further improve on app features e.g. edit and delete transaction, update user profile, inputing transaction date per item<br>
+2. Code Refactor<br>
+<br>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+<h2>Application Front Deployed on Heroku</h2>
+1. <a href ="https://itracker-fe.herokuapp.com/">iTracker Front End
+ </a><br>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<h2>Github Repositories</h2>
+1. <a href ="https://github.com/xinyingchua/itracker-fe">Front-End Repo
+ </a><br>
+2. <a href ="https://github.com/xinyingchua/itracker-be">Back-End Repo
+ </a><br>

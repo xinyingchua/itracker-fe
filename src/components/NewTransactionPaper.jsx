@@ -105,7 +105,7 @@ export default function SpanningTable(props) {
             // fullWidth
             color="secondary"
             variant="contained"
-            style={{ marginTop: '10px', color:'#3565BA', width: "50px" }}
+            style={{ marginTop: '10px', color:'#3565BA', width: "50px"}}
             children="submit"
             onClick={()=> {
               console.log("creating transaction") 
