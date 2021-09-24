@@ -48,13 +48,13 @@ export default function StarProductCard(props) {
  
         <Box display="flex" flexDirection ="row" flexWrap="wrap">
         <Grid item xs={3} style={{margin: '10px'}}>
-            <ProductImage title="Skincare" image='https://res.cloudinary.com/dhexix4cn/image/upload/v1631428034/itracker/3346470616172_S_qrvns8.png'/>
+            <ProductImage title="Skincare" quantity={3} target={40} image='https://res.cloudinary.com/dhexix4cn/image/upload/v1631428034/itracker/3346470616172_S_qrvns8.png'/>
             </Grid>
             <Grid item xs={3} style={{margin: '10px' }}>
-            <ProductImage title="Makeup" image='https://res.cloudinary.com/dhexix4cn/image/upload/v1631428034/itracker/ROUGEG_VELVET__DEFAULT_VISUAL__PRODUCT-PAGE_wux2tt.png'/>
+            <ProductImage title="Makeup" quantity={4} target={30} image='https://res.cloudinary.com/dhexix4cn/image/upload/v1631428034/itracker/ROUGEG_VELVET__DEFAULT_VISUAL__PRODUCT-PAGE_wux2tt.png'/>
             </Grid>
             <Grid item xs={3} style={{margin: '10px'}}>
-            <ProductImage title="Fragrance" image='https://res.cloudinary.com/dhexix4cn/image/upload/v1631428035/itracker/3346470109568_G010956_pamplelune_75_a_1_kp6uun.png'/>
+            <ProductImage title="Fragrance" quantity={3} target={30} image='https://res.cloudinary.com/dhexix4cn/image/upload/v1631428035/itracker/3346470109568_G010956_pamplelune_75_a_1_kp6uun.png'/>
             </Grid>
           </Box>
         </Grid>

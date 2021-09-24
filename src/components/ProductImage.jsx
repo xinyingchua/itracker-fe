@@ -47,7 +47,7 @@ export default function ProductImage(props) {
         </Typography>
         </Grid>
         <Typography className={classes.targetTitle} style={{marginLeft: '10px', color: "#1B2559"}}> 
-          Target: 42 / 50 {props.quantity}
+          Target: {props.quantity} / {props.target}
         </Typography>
         </Grid>
         </Paper>
