@@ -30,7 +30,9 @@ export default function LeaderboardList(props) {
             </Typography>
 
               <Avatar
-              style={{margin:"0"}}/>
+              style={{margin:"0"}}
+              imageSource = {props.imageSource}
+              />
          
               <Typography style={{ color: 'black' }}>
               {props.name}

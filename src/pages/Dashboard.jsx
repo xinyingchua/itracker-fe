@@ -58,16 +58,19 @@ export default function Dashboard(props) {
     const [transactionQuantity, setTransactionQuantity] = React.useState([])
     const [targetQuantityDisplay, setTargetQuantityDisplay] = React.useState('')
     const [salesQuantityDisplay, setSalesQuantityDisplay] = React.useState('')
+    const [leaderboard, setLeaderBoard] = React.useState([])
+
     const [cookies] = useCookies(['auth_token'])
 
 
     // MAKING MULTIPLE AXIOS GET
     let URL1 = 'http://localhost:4000/products';
     let URL2 = 'http://localhost:4000/transactions';
+    let URL3 = 'http://localhost:4000/transactions/leaderboard';
     
     const fetchAPI = (url) => axios.get(url, {headers: cookies});
     
-    const promiseArray = [URL1, URL2].map(fetchAPI);
+    const promiseArray = [URL1, URL2, URL3].map(fetchAPI);
     
 
     useEffect(() => {
@@ -76,6 +79,7 @@ export default function Dashboard(props) {
     .then((data) => {
       setStarProductsTarget(data[0])
       setTransactionQuantity(data[1])
+      setLeaderBoard(data[2])
 
       const targetQuantity = starProductsTarget.data.reduce(function(prev, cur) {
         return prev + cur.target
@@ -90,10 +94,11 @@ export default function Dashboard(props) {
     .catch((err) => {
       return(err)
     });
-      },[transactionQuantity])
+      },[])
 
 
-    console.log(salesQuantityDisplay)
+    // console.log(salesQuantityDisplay)
+    // console.log(leaderboard)
 
     return(
         <div className={classes.root}>
@@ -108,7 +113,9 @@ export default function Dashboard(props) {
           <Grid item xs={12} sm={6}>
             <Paper
             className={fixedHeightPaper}>
-            <LeaderBoard/>
+            <LeaderBoard 
+            setLeaderboard = {setLeaderBoard}
+            leaderboard = {leaderboard}/>
             </Paper>
           </Grid>
 

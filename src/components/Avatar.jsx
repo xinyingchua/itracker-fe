@@ -30,7 +30,7 @@ export default function ImageAvatars(props) {
 </>
 ) : ( 
   <div >
-<Avatar alt="Remy Sharp" src="https://res.cloudinary.com/dhexix4cn/image/upload/v1631430944/itracker/avatar_yvmom4.jpg" />
+<Avatar alt="Remy Sharp" src={props.imageSource} />
  <Typography 
  style={{ color: 'black' }}>
  {props.username}
