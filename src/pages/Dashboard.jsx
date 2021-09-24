@@ -59,6 +59,7 @@ export default function Dashboard(props) {
     const [targetQuantityDisplay, setTargetQuantityDisplay] = React.useState('')
     const [salesQuantityDisplay, setSalesQuantityDisplay] = React.useState('')
     const [leaderboard, setLeaderBoard] = React.useState([])
+    
 
     const [cookies] = useCookies(['auth_token'])
 
@@ -94,7 +95,7 @@ export default function Dashboard(props) {
     .catch((err) => {
       return(err)
     });
-      },[])
+      },[transactionQuantity])
 
 
     // console.log(salesQuantityDisplay)
@@ -124,12 +125,26 @@ export default function Dashboard(props) {
             <Grid container xs={12} sm={12} >
                     <Grid item xs={6} sm={6}>
                         <Paper className={classes.paper} style={{marginRight: "5px"}} >
-                        <SmallCard title="Your Sales Quantity" quantity={salesQuantityDisplay}/>
+                        <SmallCard 
+                        title="Your Sales Quantity" 
+                        transactionQuantity = {transactionQuantity}
+                        setTransactionQuantity = {setTransactionQuantity}
+                        setDisplayQuantity = {setSalesQuantityDisplay}
+                        quantity={salesQuantityDisplay}
+                        />
                         </Paper>
                     </Grid>
+
                     <Grid item xs={6} sm={6}>
                         <Paper className={classes.paper}>
-                        <SmallCard title="Your Sales Target" quantity={targetQuantityDisplay}/>
+                        <SmallCard 
+                        title="Your Sales Target" 
+                        starProductsTarget = {starProductsTarget}
+                        transactionQuantity = {transactionQuantity}
+                        quantity = {setTransactionQuantity}
+                        setDisplayQuantity = {setTargetQuantityDisplay}
+                        quantity= {targetQuantityDisplay}
+                        />
                         </Paper>
                     </Grid>
                 </Grid>

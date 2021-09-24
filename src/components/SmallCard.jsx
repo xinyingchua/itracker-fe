@@ -20,6 +20,27 @@ const useStyles = makeStyles({
 export default function SimpleCard(props) {
   const classes = useStyles();
 
+  // const tryQuantity = props.tryQuantity
+  // const targetQuantityData = props.starProductsTarget.data
+
+
+  // targetQuantityData.reduce(function())
+
+      // const targetQuantity = props.starProductsTarget.data.reduce(function(prev, cur) {
+      //   return prev + cur.target
+      // },0)
+      // setTargetQuantityDisplay(targetQuantity)
+
+  // console.log("sales", salesQuantityData)
+  // console.log("target", targetQuantityData)
+  // console.log("try", tryQuantity)
+
+
+  // function subtotal(items) {
+  //   return items.map(({ target }) => target).reduce((sum, i) => sum + i, 0);
+  // }
+  // console.log(subtotal(targetQuantityData))
+
   return (
     <Grid container>
 

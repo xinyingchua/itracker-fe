@@ -4,7 +4,6 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import ImageAvatars from '../components/Avatar'
 import LeaderboardList from '../components/LeaderboardList'
-import { useCookies } from 'react-cookie';
 
 const useStyles = makeStyles((theme) => ({
   root: {
